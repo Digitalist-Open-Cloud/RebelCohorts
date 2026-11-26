@@ -15,6 +15,7 @@
         "Measure": "Vad som mäts",
         "MeasureBack": "Kom tillbaka",
         "MeasureConverted": "Konverterade",
+        "MeasureRevenue": "Intäkter",
         "NOfNewVisitors": "%1$s av %2$s nya besökare",
         "NewVisitors": "Nya besökare",
         "NewVisitorsOf": "De nya besökarna %s",
@@ -23,10 +24,14 @@
         "PeriodWeek": "Vecka %s",
         "PickPeriod": "Kohorter är per dag, vecka eller månad. Välj en av dem som period.",
         "Retention": "Återbesök",
+        "RevenueHelp": "Intäkter är vad en kohort har dragit in för var och en av sina nya besökare, från första besöket till och med varje period.",
+        "RevenueOfNewVisitors": "%1$s från %2$s nya besökare",
         "ShareBack": "%s kom tillbaka",
         "ShareConverted": "%s konverterade",
+        "ShareRevenue": "%s kom in per ny besökare",
         "TileBack": "av 100 nya besökare kom tillbaka",
         "TileConverted": "av 100 nya besökare konverterade",
+        "TileRevenue": "per ny besökare hittills",
         "Weakest": "%1$s, svagast: de nya besökarna %2$s, där %3$s."
     }
 }

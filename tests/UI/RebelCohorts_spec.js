@@ -77,6 +77,18 @@ describe('RebelCohorts', function () {
         expect(await texts('.rebelCohortsTile')).to.include('THE FIRST WEEK 20 of 100 new visitors converted');
     });
 
+    it('should show the revenue a cohort has brought in so far for each new visitor', async function () {
+        await page.click('.rebelCohortsMeasure[data-measure="revenue"]');
+        await page.waitForNetworkIdle();
+
+        expect(await cohorts()).to.deep.equal([
+            'Feb 5 – 11, 2024 3 $3.33 $6.67 $6.67',
+            'Feb 12 – 18, 2024 1 $0 $0',
+            'Feb 19 – 25, 2024 1 $0',
+        ]);
+        expect(await texts('.rebelCohortsTile')).to.deep.equal(['THE FIRST WEEK $2 per new visitor so far']);
+    });
+
     it('should tell when the report was generated', async function () {
         expect(await page.evaluate(() => document.querySelector('.rebelCohortsGenerated').textContent)).to.match(/^Report generated /);
     });

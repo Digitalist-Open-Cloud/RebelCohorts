@@ -8,7 +8,7 @@
 (function () {
     var SVG = 'http://www.w3.org/2000/svg';
     // The periods after the first visit that the tiles tell about, for each measure.
-    var TILES = { back: [1, 4, 8], converted: [0, 1, 4] };
+    var TILES = { back: [1, 4, 8], converted: [0, 1, 4], revenue: [0, 4, 8] };
     // The darkest a cell of the table gets.
     var DARKEST = 0.55;
     // Best and weakest are told when at least this many cohorts can be compared.
@@ -46,11 +46,30 @@
         return root.querySelector('.rebelCohortsMeasure[aria-pressed="true"]').getAttribute('data-measure');
     }
 
+    // A share of new visitors, or revenue for each of them.
+    function show(root, value) {
+        return measure(root) === 'revenue'
+            ? window.CoreHome.NumberFormatter.formatCurrency(value, root.getAttribute('data-currency'), 2)
+            : percent(value);
+    }
+
     // How many of a cohort came back, or converted, a number of periods after their first visit.
+    // For revenue: what the cohort brought in up to and including that period.
     // Null when that period is not over yet.
     function count(root, row, after) {
-        var value = row[(measure(root) === 'back' ? 'nb_returned_' : 'nb_converted_') + after];
-        return value === undefined || !row.nb_visitors ? null : value;
+        var picked = measure(root);
+        if (!row.nb_visitors) {
+            return null;
+        }
+        if (picked === 'revenue') {
+            var revenue = 0;
+            for (var period = 0; period <= after; period++) {
+                revenue += row['revenue_' + period];
+            }
+            return row['revenue_' + after] === undefined ? null : revenue;
+        }
+        var value = row[(picked === 'back' ? 'nb_returned_' : 'nb_converted_') + after];
+        return value === undefined ? null : value;
     }
 
     function share(root, row, after) {
@@ -98,7 +117,8 @@
             }
             var tile = el('div', 'rebelCohortsTile');
             tile.appendChild(el('span', 'rebelCohortsTileWhen', heading(root, after)));
-            tile.appendChild(el('strong', '', number(100 * average(root, rows, after))));
+            var value = average(root, rows, after);
+            tile.appendChild(el('strong', '', measure(root) === 'revenue' ? show(root, value) : number(100 * value)));
             tile.appendChild(el('span', '', texts[measure(root)].tile));
             box.appendChild(tile);
         });
@@ -115,7 +135,7 @@
         }
         [[texts.best, best], [texts.weakest, weakest]].forEach(function (one) {
             say.appendChild(el('p', '', one[0].replace('%1$s', heading(root, list[0])).replace('%2$s', one[1].label)
-                .replace('%3$s', texts[measure(root)].share.replace('%s', percent(share(root, one[1], list[0]))))));
+                .replace('%3$s', texts[measure(root)].share.replace('%s', show(root, share(root, one[1], list[0]))))));
         });
     }
 
@@ -139,7 +159,7 @@
         var chart = svg('svg', { viewBox: '0 0 ' + width + ' ' + height, role: 'img' });
         [0, max / 2.2, max / 1.1].forEach(function (value) {
             chart.appendChild(svg('line', { x1: left, x2: width - right, y1: y(value), y2: y(value), 'class': 'rebelCohortsAxis' }));
-            chart.appendChild(svg('text', { x: left - 6, y: y(value) + 4, 'text-anchor': 'end' }, percent(value)));
+            chart.appendChild(svg('text', { x: left - 6, y: y(value) + 4, 'text-anchor': 'end' }, show(root, value)));
         });
         list.forEach(function (after, index) {
             chart.appendChild(svg('text', { x: x(index), y: height - 6, 'text-anchor': index === 0 ? 'start' : index === list.length - 1 ? 'end' : 'middle' }, state.texts.period.replace('%s', after)));
@@ -148,7 +168,7 @@
             chart.appendChild(svg('polyline', { 'class': line[0], points: line[1].map(function (value, index) { return x(index) + ',' + y(value); }).join(' ') }));
             line[1].forEach(function (value, index) {
                 var dot = svg('circle', { 'class': line[0], cx: x(index), cy: y(value), r: 3 });
-                dot.appendChild(svg('title', {}, heading(root, list[index]) + ': ' + percent(value)));
+                dot.appendChild(svg('title', {}, heading(root, list[index]) + ': ' + show(root, value)));
                 chart.appendChild(dot);
             });
         });
@@ -170,8 +190,9 @@
         var tint = el('span', 'rebelCohortsTint');
         tint.style.opacity = max ? (DARKEST * (value / of) / max).toFixed(3) : 0;
         td.appendChild(tint);
-        td.appendChild(el('span', '', percent(value / of)));
-        td.title = root.rebelCohorts.texts.ofNewVisitors.replace('%1$s', number(value)).replace('%2$s', number(of));
+        td.appendChild(el('span', '', show(root, value / of)));
+        td.title = root.rebelCohorts.texts[measure(root) === 'revenue' ? 'revenueOf' : 'ofNewVisitors']
+            .replace('%1$s', measure(root) === 'revenue' ? show(root, value) : number(value)).replace('%2$s', number(of));
         return td;
     }
 
@@ -221,7 +242,7 @@
         foot.appendChild(el('td', '', state.texts.allCohorts));
         foot.appendChild(el('td', '', number(all)));
         list.forEach(function (after) {
-            foot.appendChild(el('td', '', percent(average(root, rows, after))));
+            foot.appendChild(el('td', '', show(root, average(root, rows, after))));
         });
     }
 
@@ -265,9 +286,10 @@
 
     function load(root) {
         var state = root.rebelCohorts;
-        var isGoal = measure(root) === 'converted';
+        var isGoal = measure(root) !== 'back';
         state.asked++;
         root.querySelector('.rebelCohortsGoalLabel').hidden = !isGoal;
+        root.querySelector('.rebelCohortsRevenueHelp').hidden = measure(root) !== 'revenue';
 
         ask(root, 'getCohorts', isGoal ? { idGoal: root.querySelector('.rebelCohortsGoal').value } : {}, function (rows) {
             state.rows = rows;

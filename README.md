@@ -33,11 +33,13 @@ Pick what to measure at the top:
 - **Came back**: the share of a cohort that visited again in each period after the first.
 - **Converted**: the share that converted the goal you pick, from the period of the first visit on.
   A website with ecommerce also has its orders to pick.
+- **Revenue**: what the cohort has brought in from that goal for each of its new visitors, from
+  the first visit up to and including each period.
 
 The page has three parts:
 
-- How many of 100 new visitors came back or converted, at three points in time, and which cohort
-  was best and weakest.
+- How many of 100 new visitors came back or converted, or the revenue for each new visitor, at
+  three points in time, and which cohort was best and weakest.
 - A chart of how the share falls, for all cohorts as one. Click a row of the table to draw that
   cohort next to it.
 - A table with a row for each cohort and a column for each period after. A darker cell is a
