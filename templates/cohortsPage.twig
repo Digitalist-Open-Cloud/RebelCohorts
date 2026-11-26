@@ -1,13 +1,14 @@
 {% if period is empty %}
 <p class="rebelCohortsHint">{{ 'RebelCohorts_PickPeriod'|translate }}</p>
 {% else %}
-<div class="rebelCohorts" data-texts="{{ texts|json_encode }}">
+<div class="rebelCohorts" data-texts="{{ texts|json_encode }}" data-currency="{{ currency }}">
     <p class="rebelCohortsHelp">{{ help }}</p>
     <div class="rebelCohortsControls">
         <div class="rebelCohortsMeasures" role="group" aria-label="{{ 'RebelCohorts_Measure'|translate }}">
             <button type="button" class="rebelCohortsMeasure" data-measure="back" aria-pressed="true">{{ 'RebelCohorts_MeasureBack'|translate }}</button>
             {% if goals is not empty %}
             <button type="button" class="rebelCohortsMeasure" data-measure="converted" aria-pressed="false">{{ 'RebelCohorts_MeasureConverted'|translate }}</button>
+            <button type="button" class="rebelCohortsMeasure" data-measure="revenue" aria-pressed="false">{{ 'RebelCohorts_MeasureRevenue'|translate }}</button>
             {% endif %}
         </div>
         <label class="rebelCohortsGoalLabel" hidden>{{ 'General_Goal'|translate }}
@@ -16,6 +17,7 @@
             </select>
         </label>
     </div>
+    <p class="rebelCohortsHelp rebelCohortsRevenueHelp" hidden>{{ 'RebelCohorts_RevenueHelp'|translate }}</p>
 
     <div class="rebelCohortsReport">
         <div class="rebelCohortsTiles"></div>

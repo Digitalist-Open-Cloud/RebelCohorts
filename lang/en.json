@@ -15,6 +15,7 @@
         "Measure": "What to measure",
         "MeasureBack": "Came back",
         "MeasureConverted": "Converted",
+        "MeasureRevenue": "Revenue",
         "NOfNewVisitors": "%1$s of %2$s new visitors",
         "NewVisitors": "New visitors",
         "NewVisitorsOf": "The new visitors of %s",
@@ -23,10 +24,14 @@
         "PeriodWeek": "Week %s",
         "PickPeriod": "Cohorts are by day, week or month. Pick one of them as the period.",
         "Retention": "Retention",
+        "RevenueHelp": "Revenue is what a cohort has brought in for each of its new visitors, from the first visit up to and including each period.",
+        "RevenueOfNewVisitors": "%1$s from %2$s new visitors",
         "ShareBack": "%s came back",
         "ShareConverted": "%s converted",
+        "ShareRevenue": "%s came in per new visitor",
         "TileBack": "of 100 new visitors came back",
         "TileConverted": "of 100 new visitors converted",
+        "TileRevenue": "per new visitor so far",
         "Weakest": "%1$s, weakest: the new visitors of %2$s, where %3$s."
     }
 }

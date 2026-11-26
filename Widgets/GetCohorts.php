@@ -60,6 +60,7 @@ class GetCohorts extends Widget
             'period' => $period,
             'help' => Piwik::translate('RebelCohorts_Help' . $unit),
             'goals' => $goals,
+            'currency' => Site::getCurrencySymbolFor($idSite),
             'texts' => [
                 'noData' => Piwik::translate('CoreHome_ThereIsNoDataForThisReport'),
                 'loading' => Piwik::translate('General_LoadingData'),
@@ -70,10 +71,12 @@ class GetCohorts extends Widget
                 'allCohorts' => Piwik::translate('RebelCohorts_AllCohorts'),
                 'newVisitorsOf' => Piwik::translate('RebelCohorts_NewVisitorsOf'),
                 'ofNewVisitors' => Piwik::translate('RebelCohorts_NOfNewVisitors'),
+                'revenueOf' => Piwik::translate('RebelCohorts_RevenueOfNewVisitors'),
                 'best' => Piwik::translate('RebelCohorts_Best'),
                 'weakest' => Piwik::translate('RebelCohorts_Weakest'),
                 'back' => ['tile' => Piwik::translate('RebelCohorts_TileBack'), 'share' => Piwik::translate('RebelCohorts_ShareBack')],
                 'converted' => ['tile' => Piwik::translate('RebelCohorts_TileConverted'), 'share' => Piwik::translate('RebelCohorts_ShareConverted')],
+                'revenue' => ['tile' => Piwik::translate('RebelCohorts_TileRevenue'), 'share' => Piwik::translate('RebelCohorts_ShareRevenue')],
             ],
         ]);
     }
