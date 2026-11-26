@@ -1,0 +1,32 @@
+{
+    "RebelCohorts": {
+        "AllCohorts": "Alla kohorter",
+        "Best": "%1$s, bäst: de nya besökarna %2$s, där %3$s.",
+        "Cohorts": "Kohorter",
+        "EcommerceOrders": "E-handelsordrar",
+        "FirstDay": "Första dagen",
+        "FirstMonth": "Första månaden",
+        "FirstVisit": "Första besöket",
+        "FirstWeek": "Första veckan",
+        "GridHelp": "En rad följer en kohort. En mörkare cell är en större andel av dess nya besökare. Klicka på en rad för att rita den kohorten i diagrammet.",
+        "HelpDay": "En kohort är de besökare som kom för första gången samma dag. Se hur många av dem som kom tillbaka, eller konverterade ett mål, dagarna efter. En dag som inte är slut tas inte med.",
+        "HelpMonth": "En kohort är de besökare som kom för första gången samma månad. Se hur många av dem som kom tillbaka, eller konverterade ett mål, månaderna efter. En månad som inte är slut tas inte med.",
+        "HelpWeek": "En kohort är de besökare som kom för första gången samma vecka. Se hur många av dem som kom tillbaka, eller konverterade ett mål, veckorna efter. En vecka som inte är slut tas inte med.",
+        "Measure": "Vad som mäts",
+        "MeasureBack": "Kom tillbaka",
+        "MeasureConverted": "Konverterade",
+        "NOfNewVisitors": "%1$s av %2$s nya besökare",
+        "NewVisitors": "Nya besökare",
+        "NewVisitorsOf": "De nya besökarna %s",
+        "PeriodDay": "Dag %s",
+        "PeriodMonth": "Månad %s",
+        "PeriodWeek": "Vecka %s",
+        "PickPeriod": "Kohorter är per dag, vecka eller månad. Välj en av dem som period.",
+        "Retention": "Återbesök",
+        "ShareBack": "%s kom tillbaka",
+        "ShareConverted": "%s konverterade",
+        "TileBack": "av 100 nya besökare kom tillbaka",
+        "TileConverted": "av 100 nya besökare konverterade",
+        "Weakest": "%1$s, svagast: de nya besökarna %2$s, där %3$s."
+    }
+}

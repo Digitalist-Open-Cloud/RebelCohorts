@@ -1,0 +1,32 @@
+{
+    "RebelCohorts": {
+        "AllCohorts": "All cohorts",
+        "Best": "%1$s, best: the new visitors of %2$s, where %3$s.",
+        "Cohorts": "Cohorts",
+        "EcommerceOrders": "Ecommerce orders",
+        "FirstDay": "The first day",
+        "FirstMonth": "The first month",
+        "FirstVisit": "First visit",
+        "FirstWeek": "The first week",
+        "GridHelp": "A row follows one cohort. A darker cell is a larger share of its new visitors. Click a row to draw that cohort in the chart.",
+        "HelpDay": "A cohort is the visitors who came for the first time on the same day. See how many of them came back, or converted a goal, on the days after. A day that is not over is left out.",
+        "HelpMonth": "A cohort is the visitors who came for the first time in the same month. See how many of them came back, or converted a goal, in the months after. A month that is not over is left out.",
+        "HelpWeek": "A cohort is the visitors who came for the first time in the same week. See how many of them came back, or converted a goal, in the weeks after. A week that is not over is left out.",
+        "Measure": "What to measure",
+        "MeasureBack": "Came back",
+        "MeasureConverted": "Converted",
+        "NOfNewVisitors": "%1$s of %2$s new visitors",
+        "NewVisitors": "New visitors",
+        "NewVisitorsOf": "The new visitors of %s",
+        "PeriodDay": "Day %s",
+        "PeriodMonth": "Month %s",
+        "PeriodWeek": "Week %s",
+        "PickPeriod": "Cohorts are by day, week or month. Pick one of them as the period.",
+        "Retention": "Retention",
+        "ShareBack": "%s came back",
+        "ShareConverted": "%s converted",
+        "TileBack": "of 100 new visitors came back",
+        "TileConverted": "of 100 new visitors converted",
+        "Weakest": "%1$s, weakest: the new visitors of %2$s, where %3$s."
+    }
+}

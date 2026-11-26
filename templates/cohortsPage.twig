@@ -1,0 +1,35 @@
+{% if period is empty %}
+<p class="rebelCohortsHint">{{ 'RebelCohorts_PickPeriod'|translate }}</p>
+{% else %}
+<div class="rebelCohorts" data-texts="{{ texts|json_encode }}">
+    <p class="rebelCohortsHelp">{{ help }}</p>
+    <div class="rebelCohortsControls">
+        <div class="rebelCohortsMeasures" role="group" aria-label="{{ 'RebelCohorts_Measure'|translate }}">
+            <button type="button" class="rebelCohortsMeasure" data-measure="back" aria-pressed="true">{{ 'RebelCohorts_MeasureBack'|translate }}</button>
+            {% if goals is not empty %}
+            <button type="button" class="rebelCohortsMeasure" data-measure="converted" aria-pressed="false">{{ 'RebelCohorts_MeasureConverted'|translate }}</button>
+            {% endif %}
+        </div>
+        <label class="rebelCohortsGoalLabel" hidden>{{ 'General_Goal'|translate }}
+            <select class="rebelCohortsGoal browser-default">
+                {% for id, name in goals %}<option value="{{ id }}">{{ name }}</option>{% endfor %}
+            </select>
+        </label>
+    </div>
+
+    <div class="rebelCohortsReport">
+        <div class="rebelCohortsTiles"></div>
+        <div class="rebelCohortsSay"></div>
+
+        <div class="rebelCohortsLegend">
+            <span><i class="rebelCohortsAll"></i>{{ 'RebelCohorts_AllCohorts'|translate }}</span>
+            <span class="rebelCohortsLegendOne" hidden><i class="rebelCohortsOne"></i><span></span></span>
+        </div>
+        <div class="rebelCohortsCurve"></div>
+
+        <p class="rebelCohortsHelp">{{ 'RebelCohorts_GridHelp'|translate }}</p>
+        <div class="rebelCohortsScroll"><table class="rebelCohortsGrid"></table></div>
+    </div>
+    <p class="rebelCohortsGenerated"></p>
+</div>
+{% endif %}

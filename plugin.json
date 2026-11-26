@@ -1,0 +1,27 @@
+{
+    "name": "RebelCohorts",
+    "description": "See whether new visitors come back: follow the visitors who came for the first time in a day, week or month, and how many of them return or convert after.",
+    "version": "5.0.0",
+    "theme": false,
+    "require": {
+        "matomo": ">=5.14.1-stable,<6.0.0-b1",
+        "php": ">=8.3.0"
+    },
+    "authors": [
+        {
+            "name": "Digitalist Open Cloud",
+            "email": "cloud@digitalist.com",
+            "homepage": "https:\/\/digitalist.cloud"
+        }
+    ],
+    "support": {
+        "issues": "https:\/\/github.com\/Digitalist-Open-Cloud\/RebelCohorts\/issues"
+    },
+    "homepage": "https:\/\/digitalist.cloud",
+    "license": "GPL v3+",
+    "keywords": [
+        "cohorts",
+        "retention",
+        "returning visitors"
+    ]
+}
